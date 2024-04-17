@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="input-group mb-3 my-3">
+       
+        <input type="text" class="form-control" [(ngModel)]="inputValue">
+        <div class="input-group-prepend">
+            <button (click)="onadd()" class="btn btn-outline-secondary" type="button">ADD</button>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">task</th>
+                <th scope="col">complete</th>
+                <th scope="col">delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of list; track $index ) {
+            <tr>
+                <!-- <th scope="row" [attr.id]="$index" [class.throughline]="isClassAdded">{{list[$index].task}}</th> -->
+                <th scope="row"  [ngClass]="{'throughline' : list[$index].iscomplete}">{{list[$index].task}}</th>
+                <td><button (click)="oncomplete($index)" type="button" class="btn btn-success">complete</button></td>
+                <td><button (click)="ondelete($index)" type="button" class="btn btn-dark">Delete</button></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
